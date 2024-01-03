@@ -218,7 +218,7 @@ int teacherSideMenu(){
     printf("\t2. Add a student info. \n");
     printf("\t3. Input students grade. \n");
     printf("\t4. Sort student. \n");
-    printf("\t5. Delete studen.t \n");
+    printf("\t5. Delete student. \n");
     printf("\t6. Change student's passwd. \n");
     printf("\t0. Exit\n");
 

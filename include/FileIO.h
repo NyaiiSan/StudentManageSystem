@@ -1,7 +1,7 @@
 #ifndef __FILESIO_H__
 #define __FILESIO_H__
 
-#define STUDENTS_DATA_FILE "data/studentsData.hex" 
+#define STUDENTS_DATA_FILE "studentsData.hex" 
 
 #include"main.h"
 

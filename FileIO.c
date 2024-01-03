@@ -4,13 +4,10 @@ extern List * students;
 
 int saveStudentsData(){
     int num = 0;
-    FILE * file = fopen(STUDENTS_DATA_FILE, "w");
+    FILE * file = fopen(STUDENTS_DATA_FILE, "wb");
     ListNode *p = students->first;
     while(p != NULL){
-        char * dp = (char *) p->data;
-        for(unsigned int i=0; i < (unsigned int)sizeof(struct student); i++){
-            fputc(dp[i], file);
-        }
+        fwrite(p->data, sizeof(struct student), 1, file);
         p = p->next;
         num++;
     }
@@ -26,18 +23,15 @@ int loadStudentsData(){
         return -1;
     }
     while(1){
-        {
-            fgetc(file);
-            if(feof(file)) break;
-            fseek(file, -1, 1);
-        }
         struct student * stud = malloc(sizeof(struct student));
-        unsigned char * dp = (char *) stud;
-        for(unsigned int i=0; i < (unsigned int)sizeof(struct student); i++){
-            dp[i] = fgetc(file);
+        if(fread(stud, sizeof(struct student), 1, file) == 1){
+            insertList(students, stud);
+            num++;
         }
-        insertList(students, stud);
-        num++;
+        else{
+            free(stud);
+            break;
+        }
     }
     fclose(file);
     return num;

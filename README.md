@@ -21,7 +21,7 @@
 
 Windows 
 
-    ./buile.bat
+    ./build.bat
 
 Linux 
 
